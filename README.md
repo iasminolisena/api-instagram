@@ -16,7 +16,11 @@
 ```mermaid
 classDiagram
     Usuario --> Post: OneToMany
-    
+    Usuario --> Comentario: OneToMany
+    Post --> Comentario: OneToMany
+    Post --> Curtida: OneToMany
+    Usuario --> Curtida: OneToMany
+
     class Usuario{
         + ID
         + nome
@@ -42,12 +46,16 @@ classDiagram
     }
 
     class Comentario{
-
-
+        + ID
+        + usuario_id
+        + conteudo
+        + criado_em
     }   
 
     class Curtida{
-
+        + ID
+        + usuario_id
+        + post_id
+        + criado_em
     } 
-
 ```
