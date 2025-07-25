@@ -1,0 +1,47 @@
+CREATE TABLE Usuario (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    nickname VARCHAR(50) NOT NULL UNIQUE,
+    telefone VARCHAR(20),
+    email VARCHAR(100) NOT NULL UNIQUE,
+    data_de_nascimento DATE NOT NULL,
+    bio TEXT,
+    foto TEXT,
+    senha VARCHAR(255) NOT NULL,
+    criado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Criação da tabela Post
+CREATE TABLE Post (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    foto TEXT NOT NULL,
+    legenda TEXT,
+    localizacao TEXT,
+    criado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES Usuario(ID) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Criação da tabela Comentario
+CREATE TABLE Comentario (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    post_id INT NOT NULL,
+    conteudo TEXT NOT NULL,
+    criado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES Usuario(ID) ON DELETE CASCADE,
+    FOREIGN KEY (post_id) REFERENCES Post(ID) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Criação da tabela Curtida
+CREATE TABLE Curtida (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    post_id INT NOT NULL,
+    criado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES Usuario(ID) ON DELETE CASCADE,
+    FOREIGN KEY (post_id) REFERENCES Post(ID) ON DELETE CASCADE,
+    UNIQUE KEY unique_curtida (usuario_id, post_id) -- Um usuário só pode curtir um post uma vez
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

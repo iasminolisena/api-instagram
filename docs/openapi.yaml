@@ -1,0 +1,64 @@
+openapi: 3.1.1
+info:
+  title: API de exemplo do Instagram
+  description: Uma API de teste
+  version: 0.0.1
+
+tags:
+  - Usuarios
+  - Postagens
+  - Comentarios
+  - Curtidas
+
+paths:
+  /api/usuarios:
+    tags: [Usuarios]
+    get: buscar todos os usuários
+    post:
+
+  /api/usuarios/id:
+    tags: [Usuarios]
+    get: buscar um usuário
+    pacth:
+    delete:
+
+
+components:
+  schemas:
+    Usuario:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Chico Cesar
+          nullable: false
+        nickname:
+          type:
+          example:
+        telefone:
+          type:
+          example:
+        email:
+          type:
+          example:
+        data_de_nascimento:
+          type:
+          example:
+        bio:
+          type:
+          example:
+        Foto:
+          type:
+          example:
+        senha:
+          type:
+          example:
+        criado_em:
+          type:
+          example:
+        atualizado_em:
+          type:
+          example:
