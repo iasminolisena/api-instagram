@@ -12,53 +12,22 @@ tags:
 
 paths:
   /api/usuarios:
-    tags: [Usuarios]
-    get: buscar todos os usuários
-    post:
+    $ref: './paths/Usuario/Collection.yaml'
+  /api/usuarios/{id}:
+    $ref: './paths/Usuario/Item.yaml'
 
-  /api/usuarios/id:
-    tags: [Usuarios]
-    get: buscar um usuário
-    pacth:
-    delete:
-
+  /api/postagens:
+    $ref: '.paths/Postagem/Collection.yaml'
+  /api/postagens/{id}:
+    $ref: '.paths/Postagem/Collection.yaml'
 
 components:
   schemas:
-    Usuario:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 1
-        name:
-          type: string
-          example: Chico Cesar
-          nullable: false
-        nickname:
-          type:
-          example:
-        telefone:
-          type:
-          example:
-        email:
-          type:
-          example:
-        data_de_nascimento:
-          type:
-          example:
-        bio:
-          type:
-          example:
-        Foto:
-          type:
-          example:
-        senha:
-          type:
-          example:
-        criado_em:
-          type:
-          example:
-        atualizado_em:
-          type:
-          example:
+    Usuario: 
+      $ref: './components/Usuario.yaml'
+    Postagem: 
+      $ref: './components/Postagem.yaml'
+    Comentario: 
+      $ref: './components/Comentario.yaml'
+    Curtida: 
+      $ref: './components/Curtida.yaml'

@@ -1,0 +1,31 @@
+type: object
+properties:
+  id:
+    type: integer
+    example: 1
+  usuario_id:
+    type: integer
+    example: 42
+  foto:
+    type: string
+    format: uri
+    example: https://example.com/fotos/post123.jpg
+    nullable: false
+  legenda:
+    type: string
+    example: Carpe Diem
+    nullable: true
+  localizacao:
+    type: string
+    example: João Pessoa, PB
+    nullable: true
+  criado_em:
+    type: string
+    format: date-time
+    example: 2025-07-31T14:00:00Z
+    nullable: false
+  atualizado_em:
+    type: string
+    format: date-time
+    example: 2025-07-31T16:30:00Z
+    nullable: true

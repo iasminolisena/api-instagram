@@ -1,0 +1,17 @@
+type: object
+properties:
+  id:
+    type: integer
+    example: 1
+  usuario_id:
+    type: integer
+    example: 42
+  conteudo:
+    type: string
+    example: Muito bom, recomendo
+    nullable: false
+  criado_em:
+    type: string
+    format: date-time
+    example: 2025-07-31T18:45:00Z
+    nullable: false
